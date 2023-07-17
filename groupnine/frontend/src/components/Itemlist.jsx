@@ -1,19 +1,25 @@
 import React from 'react';
+import {Card, Button} from 'react-bootstrap'
 
 
 
 function Itemlist(props) {
-    return (<div id={'book-list'}>
-        <h4>Customer List</h4>
+
+    let cart = [{name: 'boxing gloves', quantity: '1', price: 43.22},{ name: 'boxing gloves', quantity: '1', price: 43.22}]
+    return (<div id={'order-list'}>
+        <h4>Orders</h4>
         <ul>
-        {props.customers.slice(0,5).map(
-    (customer, index) => {
-        return <li key={index} >
-            {customer.id} - {customer.first_name} - {customer.last_name}</li>
+        {cart?.map(
+    (cartItem, index) => {
+        return(<li  key={index} ><Card>
+           <div>Product Name: {cartItem.name}</div>
+               <Button className='btn-danger btn-sm' varient='danger'>Cancel</Button>
+            <div>Quantity: {cartItem.quantity}</div></Card> </li>
+             )
     }
 )}
         </ul>
-        <input type={'button'} value="New Book" />
+      
     </div>
     );
 }
