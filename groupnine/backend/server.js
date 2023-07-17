@@ -78,6 +78,18 @@ app.get("/customers", (req, res) => {
   });
 });
 
+// //findAllBooks
+ app.get("/products", (req, res) => {
+     dao.call('findAllProducts', {}, (result) => {
+        if (result.products !== undefined) {
+             res.send(result.products);
+         } else {
+             res.statusCode = 404;
+             res.end();
+         }
+     });
+   });
+
 
 // findOneBook
 app.get("/customers/:id", (req, res) => {
@@ -116,7 +128,7 @@ app.put("/customers/:id", (req, res) => {
 });
 
 // start the rest service
-var port = 3000;
+var port = 4000;
 console.log('service opening on port: ' + port)
 app.listen(port);
 
